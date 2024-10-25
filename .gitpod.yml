@@ -1,0 +1,7 @@
+tasks:
+  - name: Setup environment
+    init: |
+      mv example.env .env
+      npm install
+    # command: npx hardhat test
+  # - name: Run tests
