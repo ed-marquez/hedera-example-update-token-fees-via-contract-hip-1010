@@ -100,27 +100,26 @@ describe("Update HTS token fees via contracts", function () {
 			},
 		];
 
-		// // Create Fungible Token
-		// [ftTokenId, ftTokenInfo, txId] = await htsTokens.createHtsTokenFcn(
-		// 	"HBAR ROCKS FT", // Token Name
-		// 	"FT_HROCK", // Token Symbol
-		// 	treasuryId, // Treasury Account ID
-		// 	TokenType.FungibleCommon, // Token Type
-		// 	TokenSupplyType.Finite, // Supply Type
-		// 	1000, // Initial Supply
-		// 	1000, // Max Supply
-		// 	noFees, // Initial custom Fees
-		// 	keys, // Keys array
-		// 	treasuryKey, // Treasury Private Key
-		// 	client // Client
-		// );
-		// ftTokenAddress = ftTokenId.toSolidityAddress();
-		// ftTokenAddress = `0x${ftTokenAddress}`;
-		ftTokenAddress = "0x00000000000000000000000000000000004ccebb";
+		// Create Fungible Token
+		[ftTokenId, ftTokenInfo, txId] = await htsTokens.createHtsTokenFcn(
+			"HBAR ROCKS FT", // Token Name
+			"FT_HROCK", // Token Symbol
+			treasuryId, // Treasury Account ID
+			TokenType.FungibleCommon, // Token Type
+			TokenSupplyType.Finite, // Supply Type
+			1000, // Initial Supply
+			1000, // Max Supply
+			noFees, // Initial custom Fees
+			keys, // Keys array
+			treasuryKey, // Treasury Private Key
+			client // Client
+		);
+		ftTokenAddress = ftTokenId.toSolidityAddress();
+		ftTokenAddress = `0x${ftTokenAddress}`;
 		console.log(`\n- Fungible token ID: ${ftTokenId}`);
 		console.log(`- Fungible token address: ${ftTokenAddress}`);
 		console.log(`- See token details: \n${hashscanUrl}token/${ftTokenAddress}`);
-		// console.log(`- See transaction details: \n${hashscanUrl}transaction/${txId}`);
+		console.log(`- See transaction details: \n${hashscanUrl}transaction/${txId}`);
 	});
 
 	it("Should update the custom fee for the fungible token", async function () {
