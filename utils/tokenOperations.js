@@ -32,6 +32,28 @@ async function createHtsTokenFcn(tkName, tkSymbol, trId, tkType, sType, iSupply,
 	return [tokenId, tokenInfo, tokenCreateSubmit.transactionId];
 }
 
+async function mintNftSerialsFcn(tokenId, supplyKey, client) {
+	// // MINT NEW BATCH OF NFTs
+	// Replace IPFS CID with your own
+	const CID = [
+		Buffer.from("ipfs://bafkreibr7cyxmy4iyckmlyzige4ywccyygomwrcn4ldcldacw3nxe3ikgq"),
+		Buffer.from("ipfs://bafkreig73xgqp7wy7qvjwz33rp3nkxaxqlsb7v3id24poe2dath7pj5dhe"),
+		Buffer.from("ipfs://bafkreigltq4oaoifxll3o2cc3e3q3ofqzu6puennmambpulxexo5sryc6e"),
+		Buffer.from("ipfs://bafkreiaoswszev3uoukkepctzpnzw56ey6w3xscokvsvmfrqdzmyhas6fu"),
+		Buffer.from("ipfs://bafkreih6cajqynaqwbrmiabk2jxpy56rpf25zvg5lbien73p5ysnpehyjm"),
+	];
+	const mintTx = new TokenMintTransaction()
+		.setTokenId(tokenId)
+		.setMetadata(CID) //Batch minting - UP TO 10 NFTs in single tx
+		.freezeWith(client);
+	const mintTxSign = await mintTx.sign(supplyKey);
+	const mintTxSubmit = await mintTxSign.execute(client);
+	const mintRx = await mintTxSubmit.getReceipt(client);
+	const tokenInfo = await queries.tokenQueryFcn(tokenId, client);
+
+	return [mintRx, tokenInfo, mintTxSubmit.transactionId];
+}
+
 async function transferFtFcn(tId, senderId, receiverId, amount, senderKey, client) {
 	const tokenTransferTx = new TransferTransaction()
 		.addTokenTransfer(tId, senderId, amount * -1)
@@ -43,31 +65,8 @@ async function transferFtFcn(tId, senderId, receiverId, amount, senderKey, clien
 
 	return [tokenTransferRx, tokenTransferTx];
 }
-
-async function mintNftSerialsFcn(supplyKey, client) {
-	// // MINT NEW BATCH OF NFTs
-	// Replace IPFS CID with your own
-	const CID = [
-		Buffer.from("ipfs://QmNPCiNA3Dsu3K5FxDPMG5Q3fZRwVTg14EXA92uqEeSRXn"),
-		Buffer.from("ipfs://QmZ4dgAgt8owvnULxnKxNe8YqpavtVCXmc1Lt2XajFpJs9"),
-		Buffer.from("ipfs://QmPzY5GxevjyfMUF5vEAjtyRoigzWp47MiKAtLBduLMC1T"),
-		Buffer.from("ipfs://Qmd3kGgSrAwwSrhesYcY7K54f3qD7MDo38r7Po2dChtQx5"),
-		Buffer.from("ipfs://QmWgkKz3ozgqtnvbCLeh7EaR1H8u5Sshx3ZJzxkcrT3jbw"),
-	];
-	const mintTx = new TokenMintTransaction()
-		.setTokenId(tokenId)
-		.setMetadata(CID) //Batch minting - UP TO 10 NFTs in single tx
-		.freezeWith(client);
-	const mintTxSign = await mintTx.sign(supplyKey);
-	const mintTxSubmit = await mintTxSign.execute(client);
-	const mintRx = await mintTxSubmit.getReceipt(client);
-	const tokenInfo = await queries.tokenQueryFcn(tokenId, client);
-
-	return [tokenId, tokenInfo];
-}
-
 module.exports = {
 	createHtsTokenFcn,
-	transferFtFcn,
 	mintNftSerialsFcn,
+	transferFtFcn,
 };

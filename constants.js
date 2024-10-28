@@ -3,13 +3,9 @@ const { ethers } = require("ethers");
 
 /**  @type string */
 const OPERATOR_ID = process.env.OPERATOR_ID ? process.env.OPERATOR_ID : "0.0.0";
-
 /**  @type string */
-const OPERATOR_KEY_DER = process.env.OPERATOR_KEY_DER ? process.env.OPERATOR_KEY_DER : ethers.ZeroHash;
 const OPERATOR_KEY_HEX = process.env.OPERATOR_KEY_HEX ? process.env.OPERATOR_KEY_HEX : ethers.ZeroHash;
-
 const ALICE_KEY_HEX = process.env.ALICE_KEY_HEX ? process.env.ALICE_KEY_HEX : ethers.ZeroHash;
-
 const BOB_KEY_HEX = process.env.BOB_KEY_HEX ? process.env.BOB_KEY_HEX : ethers.ZeroHash;
 
 const NETWORKS = {
@@ -23,9 +19,8 @@ const NETWORKS = {
 	},
 	testnet: {
 		name: "testnet",
+		url: "https://testnet.hashio.io/api",
 		// url: "https://296.rpc.thirdweb.com",
-		// url: "https://testnet.hashio.io/api",
-		url: "https://testnet.hedera.validationcloud.io/v1/YwV0Wwp1DHkONU1MQ32D5BiSYp_p-078TGSS1t7trlQ",
 		chainId: 296,
 		networkNodeUrl: "0.testnet.hedera.com:50211", // https://docs.hedera.com/hedera/networks/testnet/testnet-nodes
 		nodeId: "3",
@@ -52,7 +47,6 @@ const NETWORKS = {
 
 module.exports = {
 	OPERATOR_ID,
-	OPERATOR_KEY_DER,
 	OPERATOR_KEY_HEX,
 	ALICE_KEY_HEX,
 	BOB_KEY_HEX,
