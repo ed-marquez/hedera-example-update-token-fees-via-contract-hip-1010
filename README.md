@@ -1,8 +1,12 @@
 # Update Custom Fees for HTS Tokens via Contract (HIP-1010 Reference Implementation)
 
-This repository shows how to update custom fees for HTS tokens via a smart contracts, which is enabled by [HIP-1010](https://hips.hedera.com/hip/hip-1010). The example demonstrates how to interact with HTS precompiles using standard Solidity interfaces, enabling developers to work with Hedera tokens using familiar ERC-like patterns.
+This repository shows how to update custom fees for HTS tokens (fungible and NFT) via a smart contracts, which is enabled by [HIP-1010](https://hips.hedera.com/hip/hip-1010). The example demonstrates how to interact with HTS precompiles using standard Solidity interfaces, enabling developers to work with Hedera tokens using familiar ERC-like patterns.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/?autostart=true#https://github.com/ed-marquez/hedera-example-update-token-fees-via-contract-hip-1010)
+
+| Fungible Token                                                          | NFT                                               |
+| ----------------------------------------------------------------------- | ------------------------------------------------- |
+| ![Fungible Token](./assets/update-fungible-token-fees-via-contract.png) | ![NFT](./assets/update-nft-fees-via-contract.png) |
 
 ## Local Setup
 
@@ -19,12 +23,15 @@ This repository shows how to update custom fees for HTS tokens via a smart contr
    npm install
    ```
 4. Run tests for fungible tokens, NFTs, or both:
+
    ```bash
    npx hardhat test ./test/updateFungibleTokenFeeViaContract.test.js
    ```
+
    ```bash
    npx hardhat test ./test/updateNftFeeViaContract.test.js
    ```
+
 5. Follow the instructions in the terminal
 
 ## Key Files
