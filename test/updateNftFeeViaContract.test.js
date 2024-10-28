@@ -72,7 +72,7 @@ describe("🟠 Update Custom Fees for HTS NFTs Via Smart Contracts 🟠", functi
 			},
 		];
 
-		// Create Fungible Token
+		// Create NonFungible Token
 		console.log(`- Creating HTS non-fungible token...`);
 		[nftTokenId, tokenInfo, txId] = await htsTokens.createHtsTokenFcn(
 			"HBAR ROCKS NFT", // Token Name
@@ -89,8 +89,8 @@ describe("🟠 Update Custom Fees for HTS NFTs Via Smart Contracts 🟠", functi
 		);
 		nftTokenAddress = nftTokenId.toSolidityAddress();
 		nftTokenAddress = `0x${nftTokenAddress}`;
-		console.log(`- Fungible token ID: ${nftTokenId}`);
-		console.log(`- Fungible token address: ${nftTokenAddress}`);
+		console.log(`- Non-fungible token ID: ${nftTokenId}`);
+		console.log(`- Non-fungible token address: ${nftTokenAddress}`);
 		console.log(`- See transaction details: \n${hashscanUrl}transaction/${txId}`);
 		console.log(`- Initial NFT supply: ${tokenInfo.totalSupply}`);
 
@@ -105,7 +105,7 @@ describe("🟠 Update Custom Fees for HTS NFTs Via Smart Contracts 🟠", functi
 		await waitForInput();
 	});
 
-	it("Should update the custom fee for the fungible token", async function () {
+	it("Should update the custom fee for the non-fungible token", async function () {
 		// Execute the fee schedule update
 		const treasuryIHederaTokenService = await ethers.getContractAt(IHederaTokenServiceABI, htsSystemContractAddress, treasurySigner);
 

@@ -9,10 +9,10 @@ This repository shows how to update custom fees for HTS tokens (fungible and NFT
 1. Enter your Hedera testnet credentials in the `.env` file
 2. Run tests for fungible tokens, NFTs, or both:
 
-| Fungible Token                                                          | NFT                                                       |
-| ----------------------------------------------------------------------- | --------------------------------------------------------- |
-| `npx hardhat test ./test/updateFungibleTokenFeeViaContract.test.js`     | `npx hardhat test ./test/updateNftFeeViaContract.test.js` |
-| ![Fungible Token](./assets/update-fungible-token-fees-via-contract.png) | ![NFT](./assets/update-nft-fees-via-contract.png)         |
+   | Fungible Token                                                          | NFT                                                       |
+   | ----------------------------------------------------------------------- | --------------------------------------------------------- |
+   | `npx hardhat test ./test/updateFungibleTokenFeeViaContract.test.js`     | `npx hardhat test ./test/updateNftFeeViaContract.test.js` |
+   | ![Fungible Token](./assets/update-fungible-token-fees-via-contract.png) | ![NFT](./assets/update-nft-fees-via-contract.png)         |
 
 ## Local Setup
 
@@ -36,6 +36,10 @@ This repository shows how to update custom fees for HTS tokens (fungible and NFT
 
    ```bash
    npx hardhat test ./test/updateNftFeeViaContract.test.js
+   ```
+
+   ```bash
+   npx hardhat test
    ```
 
 5. Follow the instructions in the terminal
