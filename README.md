@@ -14,9 +14,9 @@ This repository shows how to update custom fees for HTS tokens (fungible and NFT
    ```bash
    git clone https://github.com/ed-marquez/hedera-example-update-token-fees-via-contract-hip-1010.git
    ```
-2. Copy `.env.example` to `.env` and add your environment variables (and Hedera testnet credentials)
+2. Copy `.env.sample` to `.env` and add your environment variables (and Hedera testnet credentials)
    ```bash
-   cp .env.example .env
+   cp .env.sample .env
    ```
 3. Install dependencies
    ```bash

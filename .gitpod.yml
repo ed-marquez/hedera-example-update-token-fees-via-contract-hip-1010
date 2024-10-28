@@ -1,5 +1,5 @@
 tasks:
   - name: Setup environment
     init: |
-      cp example.env .env
+      cp .env.sample .env
       npm install
